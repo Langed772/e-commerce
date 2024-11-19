@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Application</title>
+  <link rel="stylesheet" href="paiement.css">
+  <style>
+    .upload-btn {
+      background-color: black;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .upload-btn img {
+      margin-right: 10px;
+      width: 20px;
+      height: 20px;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .left-column {
+      width: 65%;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .payment-details {
+      width: 100%;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .payment-details img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav id="navbar">
+      <div class="logo">
+        <img src="assets/images/logo.png" alt="Logo BKJA" />
+      </div>
+      <div class="nav-center">
+        <a href="categories.html"><span>CATEGORIES</span></a>
+        <a href="nouveaute.html"><span>NOUVEAUTÉS</span></a>
+        <a href="promotion.html"><span>PROMOTION</span></a>
+        <a href="offrespartenaires.html"><span>OFFRES PARTENAIRES</span></a>
+      </div>
+      <div class="nav-icons">
+        <button id="search-button" class="icon-btn">
+          <img src="assets/images/rech.png" alt="Recherche" />
+        </button>
+        <div id="search-bar" class="search-bar">
+          <input type="text" placeholder="Rechercher..." />
+        </div>
+        <a href="inscription.html" id="profile-link">
+          <img src="assets/images/profil.png" alt="Connexion" id="profile-image" />
+        </a>
+        <button id="cart-button" class="icon-btn">
+          <img src="assets/images/panier.png" alt="Panier" />
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="left-column">
+      <form id="order-form">
+        <section id="contact">
+          <h2>CONTACT</h2>
+          <input type="email" id="email" placeholder="Adresse e-mail" required>
+        </section>
+        <section id="livraison">
+          <h2>LIVRAISON</h2>
+          <input type="text" id="pays" placeholder="Pays/région" required>
+          <div class="name-group">
+            <input type="text" id="nom" placeholder="Nom" required>
+            <input type="text" id="prenom" placeholder="Prénom (facultatif)">
+          </div>
+          <input type="text" id="adresse" placeholder="Adresse" required>
+          <input type="text" id="ville" placeholder="Ville" required>
+          <input type="text" id="telephone" placeholder="Téléphone" required>
+        </section>
+        <section id="paiement">
+          <h2>PAIEMENT</h2>
+          <label for="carte">CARTE DE CRÉDIT (Visa, Djamo, Push, UBA United, MasterCard)</label>
+          <input type="text" id="nom_de_carte" placeholder="Nom de la carte" required>
+          <div class="card-info">
+            <input type="text" id="expiration" placeholder="Date d'expiration (MM/AA)" required>
+            <input type="text" id="securite" placeholder="Code de sécurité" required>
+          </div>
+          <input type="text" id="nom_sur_carte" placeholder="Nom sur la carte" required>
+          
+          <!-- Upload sections -->
+          <label for="upload1" class="upload-btn">
+            <img src="assets/images/tel1.png" alt="Download Icon">
+            Télécharger la carte SOLDE (.pdf)
+          </label>
+          <input type="file" id="upload1" name="upload1" required>
+          
+          <label for="upload2" class="upload-btn">
+            <img src="assets/images/tel2.png" alt="Download Icon">
+            Télécharger le bulletin de salaire (.pdf)
+          </label>
+          <input type="file" id="upload2" name="upload2" required>
+          
+          <label for="mobile-money">MOBILE MONEY (Orange Money, Moov Money, MTN Money, Wave)</label>
+          <input type="text" id="nom_de_mobile_money" placeholder="Nom du mobile money" required>
+          <input type="text" id="numero_du_mobile_money" placeholder="Numéro du mobile money" required>
+          
+          <button type="submit" id="order-button" class="order-btn">Commander</button>
+        </section>
+      </form>
+    </div>
+  
+    <div class="right-column">
+      <div class="payment-details">
+        <h2 id="product-title">Titre du produit</h2>
+        <p id="product-price">Prix du produit</p>
+        <img id="product-image" src="#" alt="Image du produit">
+      </div>
+    </div>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+  // Récupérer les informations du produit stockées dans localStorage
+  const produitAjoute = JSON.parse(localStorage.getItem('produitAjoute'));
+
+  if (produitAjoute) {
+    // Afficher les informations du produit
+    document.getElementById('product-title').textContent = produitAjoute.nom;
+    document.getElementById('product-price').textContent = produitAjoute.prix;
+    document.getElementById('product-image').src = produitAjoute.image;
+  } else {
+    console.log("Aucun produit trouvé.");
+  }
+
+  document.getElementById('order-button').addEventListener('click', function(event) {
+    event.preventDefault(); // Empêcher l'envoi du formulaire par défaut
+    // Récupérer tous les champs du formulaire
+    const email = document.getElementById('email').value;
+    const pays = document.getElementById('pays').value;
+    const nom = document.getElementById('nom').value;
+    const adresse = document.getElementById('adresse').value;
+    const ville = document.getElementById('ville').value;
+    const telephone = document.getElementById('telephone').value;
+    const nomCarte = document.getElementById('nom_de_carte').value;
+    const expiration = document.getElementById('expiration').value;
+    const securite = document.getElementById('securite').value;
+    const nomMobileMoney = document.getElementById('nom_de_mobile_money').value;
+    const numeroMobileMoney = document.getElementById('numero_du_mobile_money').value;
+
+    if (email && pays && nom && adresse && ville && telephone && nomCarte && expiration && securite && nomMobileMoney && numeroMobileMoney) {
+      // Générer un ID unique pour le produit
+      const produitId = Date.now(); // Utilisation de l'heure actuelle comme ID
+
+      // Récupérer les informations du produit
+      const produitAjoute = JSON.parse(localStorage.getItem('produitAjoute'));
+      const montant = produitAjoute.prix; // Prix du produit
+      const imageProduit = produitAjoute.image; // Image du produit
+      const nomProduit = produitAjoute.nom; // Nom du produit
+
+      // Rediriger vers la page BKJA Électroménagers avec les paramètres
+      window.location.href = `partenaire.html?id=${produitId}&image=${encodeURIComponent(imageProduit)}&montant=${montant}&nom=${encodeURIComponent(nomProduit)}`;
+
+    } else {
+      // Afficher un message d'erreur si des champs sont manquants
+      alert("Veuillez remplir tous les champs requis.");
+    }
+  });
+});
+  </script>
+  
+</body>
+</html>

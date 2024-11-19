@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajout d'intermédiaire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            text-align: center;
+        }
+        .container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .container input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .container button {
+            display: inline-block;
+            padding: 10px;
+            width: 80%;
+            background-color: #000;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .container button:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="assets/images/logo.png" alt="BKJA Électroménagers" style="width: 100px; margin-bottom: 20px;">
+        <h1>Ajout d’intermédiaire</h1>
+        <form id="partenaireForm" method="POST" action="connectpart.php" onsubmit="return prepareEmail()">
+            <input type="text" id="nom" name="nom" placeholder="Nom" required>
+            <input type="text" id="prenom" name="prenom" placeholder="Prénom" required>
+            <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" required> <!-- Added username input -->
+            <input type="text" id="lieu" name="lieu" placeholder="Lieu d'habitation" required>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <input type="text" id="matricule" name="matricule" placeholder="Matricule" required>
+            <button type="submit">AJOUTER L'INTERMÉDIAIRE</button>
+        </form>
+    </div>
+
+
+    <script type="text/javascript">
+        function prepareEmail() {
+            var nom = document.getElementById('nom').value;
+            var prenom = document.getElementById('prenom').value;
+            var lieu = document.getElementById('lieu').value;
+            var email = document.getElementById('email').value;
+            var matricule = document.getElementById('matricule').value;
+            var username = document.getElementById('username').value; // Get username value
+
+            var subject = "Confirmation de votre inscription en tant que intermediaire";
+            var body = "Bonjour " + prenom + " " + nom + ",\n\n" + 
+                       "Nous avons le plaisir de vous confirmer que votre inscription en tant que partenaire de notre plateforme e-commerce a bien été enregistrée.\n" +
+                       "Voici les informations que vous avez fournies :\n" +
+                       "Nom : " + nom + "\n" +
+                       "Prénom : " + prenom + "\n" +
+                       "Lieu d’habitation : " + lieu + "\n" +
+                       "Matricule : " + matricule + "\n" +
+                       "Email : " + email + "\n" +
+                       "Nom d'utilisateur : " + username + "\n\n" + // Added username to the email body
+                       "Merci de rejoindre notre réseau de partenaires.\n\n" +
+                       "Cordialement,\nL’équipe BKJA Électroménagers";
+
+            alert("Le formulaire a été envoyé avec succès !");
+            var mailtoLink = "mailto:" + email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+            window.location.href = mailtoLink;
+
+            return false; // Prevent default form submission
+        }
+    </script>
+</body>
+</html>

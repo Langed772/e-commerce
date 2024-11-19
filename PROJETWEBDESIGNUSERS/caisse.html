@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BKJA Dashboard</title>
+    <style>
+        /* Styles CSS ici */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+        }
+        .dashboard {
+            display: flex;
+            height: 100%;
+            
+        }
+     
+        .sidebar img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .sidebar nav a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .sidebar nav a:hover {
+            background-color: #ffffff;
+        }
+        .sidebar nav img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+     
+        .sidebar {
+    position: fixed; /* Fixe la barre latérale */
+    width: 180px;
+    height: 100%; /* S'assure qu'elle occupe toute la hauteur de la page */
+    background-color: #eeeeee;
+    padding: 20px;
+    color: black;
+    overflow-y: auto; /* Permet le défilement de la barre latérale si le contenu déborde */
+}
+
+.main-content {
+    margin-left: 205px; /* Laisse de l'espace pour la barre latérale */
+    padding: 20px;
+    background-color: #ecf0f1;
+    width: 100%;
+}
+
+.header {
+    position: fixed; /* Fixe l'en-tête */
+    top: 0; /* Positionne l'en-tête en haut */
+    left: 220px; /* Laisse de l'espace pour la barre latérale */
+    right: 0; /* Prend tout l'espace disponible à droite */
+    background-color: #949494;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    z-index: 1000; /* Assure que l'en-tête soit au-dessus du contenu */
+}
+
+.main-content {
+    margin-top: 60px; /* Assure que le contenu principal soit en dessous de l'en-tête */
+}
+
+        .header button {
+            padding: 8px 12px;
+            background-color: #f6f6f6;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .header button:hover {
+            background-color: #f6f6f6;
+        }
+        .kpi-cards {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .kpi-card {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            width: 22%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .kpi-card h3 {
+            margin: 0 0 10px;
+        }
+        .kpi-card span {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+        .chart-container {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .chart {
+            flex-grow: 2;
+            height: 300px;
+            background-color: #fff;
+            margin-right: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+        
+        .map-chart {
+            flex-grow: 1;
+            height: 300px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        th, td {
+            border: 1px solid #ffffff;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        td {
+            background-color: #f9f9f9;
+        }
+         .loans-table {
+            width: 100%;
+            background: white;
+            border-radius: 5px;
+            border-collapse: collapse;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .loans-table th {
+            background: #f8f9fa;
+            padding: 12px;
+            text-align: left;
+            color: #666;
+            font-weight: 500;
+            border-bottom: 2px solid #eee;
+        }
+        .loans-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        .search-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .search-box {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <img src="assets/images/logo.png" alt="BKJA Électroménagers">
+            <nav id="sidebar-nav"></nav>
+        </div>
+        <div class="main-content">
+            <header class="header">
+                <h2>CAISSE</h2>
+            </header>
+            <div class="kpi-cards" id="kpi-cards"></div>
+            <div class="chart-container">
+                <div class="chart" id="revenue-chart">
+                    <!-- Le graphique sera inséré ici par JavaScript -->
+                </div>
+                <div class="map-chart">
+                    <h3>Revenue par Commune</h3>
+                    <!-- Placeholder pour la carte -->
+                    <ul id="revenue-by-commune"></ul>
+                </div>
+            </div>
+            <div>
+                <h3>Meilleures Ventes</h3>
+                <table id="best-sellers"></table>
+            </div>
+            <br><br><br>
+
+            <div class="search-container">
+                <h3>COMMANDE</h3>
+                <input type="text" class="search-box" placeholder="Rechercher par date, client..." oninput="filterTable()">
+            </div>
+
+            <table class="loans-table">
+                <thead>
+                    <tr>
+                        <th>ID Client</th>
+                        <th>Produits</th>
+                        <th>Date</th>
+                        <th>Client</th>
+                        <th>Revenue</th>
+                       
+                    </tr>
+                </thead>
+                <tbody id="loans-tbody">
+                    <tr>
+                        <td>#53200001</td>
+                        <td class="products-cell">
+                            <img src="/api/placeholder/30/30" alt="Product">
+                            <span>3 Articles</span>
+                        </td>
+                        <td>10 Jan 2024</td>
+                        <td>Ronald Kouakou</td>
+                        <td>250 000 XOF</td>
+                       
+                    </tr>
+                    <tr>
+                        <td>#53200002</td>
+                        <td class="products-cell">
+                            <img src="/api/placeholder/30/30" alt="Product">
+                            <span>5 Articles</span>
+                        </td>
+                        <td>11 Jan 2024</td>
+                        <td>Jean Michel</td>
+                        <td>350 000 XOF</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <script>
+        // Données
+        const navItems = [
+        { imgSrc: 'assets/images/maison.png', text: 'DASHBOARD', href: 'smart.html' },
+        { imgSrc: 'assets/images/partenaire.png', text: 'PARTENAIRES', href: 'partenaire.html' },
+        { imgSrc: 'assets/images/valid.png', text: 'VALIDATION', href: 'validation.html' },
+        { imgSrc: 'assets/images/caiss.png', text: 'CAISSE', href: 'caisse.html' },
+        { imgSrc: 'assets/images/para.png', text: 'PARAMÈTRES', href: 'parametres.html' }
+        ];
+        function populateSidebar() {
+        const nav = document.getElementById('sidebar-nav');
+        navItems.forEach(item => {
+            const a = document.createElement('a');
+            a.href = item.href; // Set the link to the href from navItems
+            a.innerHTML = `<img src="${item.imgSrc}" alt="${item.text}"> ${item.text}`;
+            nav.appendChild(a);
+        });
+    }
+
+
+        const kpiData = [
+            { title: 'REVENUE', value: '553K XOF', change: '+11.01%' },
+            { title: 'PROFIT', value: '170000 XOF', change: '+9.15%' },
+           
+        ];
+
+        const revenueByCommune = [
+            { name: 'LG', percentage: '49%' },
+            { name: 'Samsung', percentage: '25%' },
+            { name: 'Hair', percentage: '15%' },
+        ];
+
+        const bestSellers = [
+            { name: 'LG-RÉFRIGÉRATEUR 3 VOLETS', price: '155 000 XOF', sold: 10, sales: '1 550 000 XOF' },
+            { name: 'SAMSUNG-MINI RÉFRIGÉRATEUR 2 VOLETS', price: '90 900 XOF', sold: 7, sales: '636 300 XOF' },
+            { name: 'SAMSUNG-ASPIRATEUR SANS SAC SC21-25W', price: '10 500 XOF', sold: 30, sales: '315 000 XOF' },
+            { name: 'LG ELECTRONICS - RASOIR ÉLECTRIQUE NOIR', price: '13 000 XOF', sold: 15, sales: '195 000 XOF' },
+            { name: 'LG ELECTRONICS - TÉLÉVISEUR USB, HDMI, BLUETOOTH', price: '92 000 XOF', sold: 1, sales: '92 000 XOF' }
+        ];
+
+        // Fonctions pour remplir le contenu
+       
+        function populateKPICards() {
+            const container = document.getElementById('kpi-cards');
+            kpiData.forEach(kpi => {
+                const card = document.createElement('div');
+                card.className = 'kpi-card';
+                card.innerHTML = `
+                    <h3>${kpi.title}</h3>
+                    <p>${kpi.value}</p>
+                    <span style="color: ${kpi.change.startsWith('+') ? 'green' : 'red'}">${kpi.change}</span>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function populateRevenueByCommune() {
+            const list = document.getElementById('revenue-by-commune');
+            revenueByCommune.forEach(commune => {
+                const li = document.createElement('li');
+                li.textContent = `${commune.name}: ${commune.percentage}`;
+                list.appendChild(li);
+            });
+        }
+
+        function populateBestSellers() {
+            const table = document.getElementById('best-sellers');
+            table.innerHTML = `
+                <tr>
+                    <th>Produit</th>
+                    <th>Prix Unitaire</th>
+                    <th>Quantité Vendue</th>
+                    <th>Total</th>
+                </tr>
+            `;
+            bestSellers.forEach(product => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${product.name}</td>
+                    <td>${product.price}</td>
+                    <td>${product.sold}</td>
+                    <td>${product.sales}</td>
+                `;
+                table.appendChild(row);
+            });
+        }
+
+        // Appel des fonctions
+        populateSidebar();
+        populateKPICards();
+        populateRevenueByCommune();
+        populateBestSellers();
+
+        function filterTable() {
+    const searchTerm = document.querySelector('.search-box').value.toLowerCase();
+    const rows = document.querySelectorAll('#loans-tbody tr');
+
+    rows.forEach(row => {
+        const clientName = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+        const date = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+        
+        if (clientName.includes(searchTerm) || date.includes(searchTerm)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+    </script>
+</body>
+</html>

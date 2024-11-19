@@ -1,0 +1,669 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+  }
+  
+  #navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .nav-center {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+  }
+  
+  .nav-center a {
+    text-decoration: none; /* Supprime les soulignements */
+    color: black;
+    font-weight: bold;
+    margin: 0 15px;
+    font-size: 16px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+  
+  .nav-center span:hover {
+    color: #007bff;
+  }
+  
+  .nav-icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 15px;
+    padding: 0;
+  }
+  
+  .icon-btn img {
+    width: 24px;
+    height: 24px;
+    filter: invert(0.8);
+  }
+  
+  .icon-btn:hover img {
+    filter: invert(0);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+h2{
+   
+    margin-bottom: 70px;
+}
+
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+  
+.nav-center a {
+    text-decoration: none; /* Supprime les soulignements */
+    color: black;
+    font-weight: bold;
+    margin: 0 15px;
+    font-size: 16px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+  
+
+.nav-center span {
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    margin: 0 15px;
+    font-size: 16px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.nav-center span:hover {
+    color: #007bff;
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 15px;
+    padding: 0;
+}
+
+.icon-btn img {
+    width: 24px;
+    height: 24px;
+    filter: invert(0.8);
+}
+
+.icon-btn:hover img {
+    filter: invert(0);
+}
+
+  
+  
+  
+  /* Carousel styles */
+  .carousel {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+  }
+  
+  .carousel-item.active {
+    opacity: 1;
+  }
+  
+  /* Centered text and button */
+  .centered-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+  }
+  
+  .centered-text h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  #connect-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white; /* Couleur du texte */
+    border: 2px solid rgb(255, 255, 255); /* Bordure du bouton */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: transparent; /* Couleur de fond transparente */
+}
+
+#connect-button:hover {
+    background-color: black; /* Couleur de fond lors du survol */
+}
+
+
+/* Section Nouveautés */
+#nouveautes {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  
+  #nouveautes h2 {
+    font-size: 28px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+  }
+  
+  /* Grille des produits */
+  .product-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  /* Carte produit */
+  .product-card {
+    width: 23%;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Nécessaire pour positionner le bouton */
+  }
+  
+  /* Image du produit */
+  .product-card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+  
+  /* Titre du produit */
+  .product-card h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Description du produit */
+  .product-card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  /* Prix */
+  .product-card .price {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  /* Bouton Ajouter au Panier */
+  .product-card button {
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    opacity: 0; /* Masquer le bouton par défaut */
+    visibility: hidden; /* Éviter l'espace occupé */
+    position: absolute; /* Positionner le bouton */
+    bottom: 20px; /* Espacement en bas de la carte */
+    left: 50%; /* Centrer le bouton */
+    transform: translateX(-50%); /* Centrer le bouton */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Transition pour le bouton */
+  }
+  
+  /* Afficher le bouton au survol de la carte produit */
+  .product-card:hover button {
+    opacity: 1; /* Rendre le bouton visible */
+    visibility: visible; /* Rendre le bouton visible */
+  }
+  
+  /* Effet au survol */
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+  /* Section Que faisons-nous */
+/* Section Que faisons-nous */
+#que-faisons-nous {
+    padding: 100px 70px;
+    background-color: #d6d6d6;
+    position: relative;
+    max-width: 100%; /* Limite la largeur de la section */
+    margin: 50px auto 0; /* Ajoute un espace au-dessus de la section */
+    display: flex; /* Utilise Flexbox pour la mise en page */
+    flex-direction: column; /* Aligne les éléments en colonne */
+    align-items: flex-start; /* Aligne tous les éléments à gauche */
+    text-align: left; /* Aligne le texte à gauche */
+  }
+  
+  .icon-container {
+    margin-bottom: 20px;
+  }
+  
+  .icon {
+    width: 50px; /* Ajustez la taille selon vos besoins */
+    height: auto;
+  }
+  
+  #que-faisons-nous {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background-color: #f2f2f2;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.text-container {
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.icon-container {
+    margin-bottom: 10px; /* Space below the icon */
+}
+
+.icon {
+    width: 40px; /* Adjust size as needed */
+    height: auto;
+}
+
+#que-faisons-nous h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+#que-faisons-nous p {
+    font-size: 18px;
+    color: #000000;
+    margin-top: 10px;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+.image-container {
+    max-width: 50%;
+}
+
+.appliance-image {
+    width: 100%;
+    height: auto;
+}
+
+  
+  #partenaires {
+    display: flex; /* Utilise Flexbox pour la mise en page */
+    padding: 200px; /* Ajoute de l'espace autour de la section */
+    background-color: #f2f2f2; /* Couleur de fond pour la section */
+    align-items: center; /* Aligne verticalement les éléments au centre */
+    justify-content: space-between; /* Espace entre l'image et le texte */
+}
+
+.partner-image {
+    width: 500px; /* Ajustez la taille selon vos besoins */
+    height: auto; /* Maintient le ratio de l'image */
+    margin-right: 20px; /* Espace entre l'image et le texte */
+}
+
+.partner-text {
+    max-width: 60%; /* Limite la largeur du texte */
+}
+
+#partenaires h2 {
+    font-size: 20px; /* Taille du titre */
+    margin-bottom: 10px; /* Espace sous le titre */
+}
+
+#partenaires h4 {
+    font-size: 40px; /* Taille du sous-titre */
+    margin: 10px 0; /* Espace au-dessus et au-dessous */
+}
+
+#partenaires p {
+    font-size: 16px; /* Taille du paragraphe */
+    line-height: 1.5; /* Améliore la lisibilité */
+    margin-bottom: 20px; /* Espace sous le paragraphe */
+}
+
+.partner-logos {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 120px; /* Ajustez la taille selon vos besoins */
+    height: auto; /* Maintient le ratio de l'image */
+}
+
+.discover-button {
+    padding: 10px 20px; /* Espace à l'intérieur du bouton */
+    background-color: transparent; /* Fond transparent */
+    border: 2px solid black; /* Bordure du bouton */
+    color: black; /* Couleur du texte */
+    cursor: pointer; /* Change le curseur au survol */
+    text-transform: uppercase; /* Met le texte en majuscules */
+    font-weight: bold; /* Texte en gras */
+    transition: background-color 0.3s ease; /* Transition pour l'effet de survol */
+}
+
+.discover-button:hover {
+    background-color: black; /* Fond noir au survol */
+    color: white; /* Texte blanc au survol */
+}
+
+  #avis {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  
+  #avis h2 {
+    font-size: 35px;
+    margin-bottom: 40px;
+  }
+  
+  .avis-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Trois colonnes */
+    gap: 100px; /* Espacement entre les cartes */
+  }
+  
+  .avis-card {
+    background-color: white;
+    border: 1px solid #000000;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stars {
+    font-size: 20px;
+    color: gold; /* Couleur des étoiles */
+  }
+  
+  .author {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .profile-pic {
+    width: 40px; /* Taille de l'image de profil */
+    height: 40px;
+    border-radius: 50%; /* Arrondi de l'image */
+    margin-right: 10px;
+  }
+  
+  #promotion {
+    padding: 200px 20px;
+    background-color: #f0f0f0; /* Couleur de fond */
+    text-align: left; /* Aligner le texte à gauche */
+    margin: 50px 0; /* Espacement autour de la section */
+
+    border-radius: 10px; /* Arrondi des coins */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre portée */
+}
+
+#promotion h4 {
+    font-size: 14px; /* Taille du titre h4 */
+    margin-bottom: 10px; /* Espacement en bas */
+}
+
+#promotion h2 {
+    font-size: 28px; /* Taille du titre h2 */
+    margin-bottom: 20px; /* Espacement en bas */
+}
+
+#promotion p {
+    font-size: 18px; /* Taille du texte du paragraphe */
+    color: #333; /* Couleur du texte */
+    margin-bottom: 30px; /* Espacement en bas */
+}
+
+.btn-decouvrir {
+    padding: 10px 20px; /* Espace à l'intérieur du bouton */
+    background-color: transparent; /* Fond transparent */
+    border: 2px solid black; /* Bordure du bouton */
+    color: black; /* Couleur du texte */
+    cursor: pointer; /* Change le curseur au survol */
+    text-transform: uppercase; /* Met le texte en majuscules */
+    font-weight: bold; /* Texte en gras */
+    transition: background-color 0.3s ease; /* Transition pour l'effet de survol */
+}
+
+.btn-decouvrir:hover {
+    background-color: black; /* Fond noir au survol */
+    color: white; /* Texte blanc au survol */}
+
+    #service-card {
+        padding: 130px 20px; /* Espacement autour de la section */
+        background-color: #F5F5F5; /* Couleur de fond */
+    }
+    
+    .card {
+        width: 100%; /* Largeur de la carte */
+        max-width: 100%; /* Limite la largeur maximale */
+        background-color: #F5F5F5; /* Couleur de fond de la carte */
+        border-radius: 10px; /* Arrondi des coins */
+        padding: 50px; /* Espacement interne */
+        display: flex; /* Utilise Flexbox pour aligner les éléments à l'intérieur de la carte */
+        justify-content: space-between; /* Espace entre les éléments */
+    }
+    
+    .service-item {
+        text-align: center; /* Aligne le texte au centre */
+        flex: 1; /* Permet aux éléments de prendre une largeur égale */
+        margin: 0 30px; /* Espacement horizontal entre les éléments */
+    }
+    
+    .icon-container {
+        margin-bottom: 10px; /* Espacement en bas de l'icône */
+    }
+    
+    .icon {
+        width: 25px; /* Ajustez la taille de l'icône */
+        height: auto; /* Garde la proportion de l'icône */
+    }
+    
+    h3 {
+        font-size: 20px; /* Taille du titre */
+        margin-bottom: 5px; /* Espacement en bas du titre */
+    }
+    
+    p {
+        font-size: 14px; /* Taille du texte du paragraphe */
+        color: #000000; /* Couleur du texte */
+        margin-bottom: 20px;
+    }
+    
+
+    #footer {
+        background-color: #000; /* Fond noir */
+        color: #fff; /* Texte blanc */
+        padding: 50px 20px; /* Espacement interne */
+        text-align: center;
+      }
+      
+      .footer-container {
+        display: flex;
+        justify-content: center; /* Centrage horizontal des sections */
+        gap: 100px; /* Espace entre les colonnes */
+        margin-bottom: 40px; /* Espace au-dessous des sections principales */
+      }
+      
+      .newsletter {
+        text-align: center;
+        margin-top: 20px;
+      }
+      
+      .newsletter h3 {
+        font-size: 18px;
+      }
+      
+      .newsletter form {
+        display: flex;
+        justify-content: center;
+        gap: 10px; /* Espace entre le champ et le bouton */
+      }
+      
+      .newsletter input[type="email"] {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #fff; /* Ajoute une bordure blanche */
+        width: 250px; /* Largeur du champ email */
+        background-color: #000000; /* Couleur du bouton */
+        color: #fff; /* Couleur du texte dans le champ */
+      }
+      
+      .newsletter button {
+        padding: 10px 20px;
+        background-color: #000000; /* Couleur du bouton */
+        border: 1px solid #ffffff; /* Bordure blanche */
+        color: #fff;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      
+      .help-faq, .secure-payment, .follow-us {
+        text-align: left;
+      }
+      
+      .help-faq h3,
+      .secure-payment h3,
+      .follow-us h3 {
+        font-size: 18px; /* Taille du titre */
+        margin-bottom: 15px; /* Espace sous le titre */
+      }
+      
+      .help-faq ul,
+      .secure-payment ul,
+      .follow-us ul {
+        list-style: none; /* Supprime les puces */
+        padding: 0;
+      }
+      
+      .help-faq ul li,
+      .secure-payment ul li,
+      .follow-us ul li {
+        margin-bottom: 10px; /* Espace entre les éléments de la liste */
+      }
+      
+      .help-faq ul li a,
+      .follow-us ul li span {
+        color: #fff;
+        text-decoration: none;
+      }
+      
+      .payment-icons img,
+      .social-icons img {
+        width: 15px; /* Ajuste la taille des icônes de paiement et de réseaux sociaux */
+        margin-right: 10px; /* Espace à droite des icônes */
+      }
+      
+      .payment-icons,
+      .social-icons {
+        display: flex;
+        align-items: center;
+      }
+      
+      .social-icons li {
+        display: flex;
+        align-items: center;
+      }
+      
+      .social-icons li span {
+        margin-left: 5px;
+      }
+      
+      /* Section Tous droits réservés */
+      .footer-bottom {
+        margin-top: 30px; /* Espace au-dessus de la section */
+      }
+      
+      .footer-bottom p {
+        font-size: 14px;
+        color: #fff;
+        text-align: center;
+        margin-top: 20px;
+      }
+      

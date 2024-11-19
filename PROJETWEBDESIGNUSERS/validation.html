@@ -1,0 +1,309 @@
+<!DOCTYPE html> 
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BKJA Validation</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+        }
+        .dashboard {
+            display: flex;
+            height: 100%;
+        }
+        .sidebar {
+            position: fixed; /* Fixe la barre latérale */
+            width: 180px;
+            height: 100%; /* S'assure qu'elle occupe toute la hauteur de la page */
+            background-color: #eeeeee;
+            padding: 20px;
+            color: black;
+            overflow-y: auto; /* Permet le défilement de la barre latérale si le contenu déborde */
+        }
+        .sidebar img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .sidebar nav a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .sidebar nav a:hover {
+            background-color: #ffffff;
+        }
+        .sidebar nav img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        .main-content {
+            margin-left: 205px; /* Laisse de l'espace pour la barre latérale */
+            padding: 20px;
+            background-color: #ecf0f1;
+            position: relative; /* Permet au contenu principal de s'adapter à la position fixe */
+            width: 100%;
+        }
+        .header {
+            position: fixed; /* Fixe l'en-tête */
+            top: 0; /* Positionne l'en-tête en haut */
+            left: 220px; /* Laisse de l'espace pour la barre latérale */
+            right: 0; /* Prend tout l'espace disponible à droite */
+            background-color: #949494;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            z-index: 1000; /* Assure que l'en-tête soit au-dessus du contenu */
+        }
+        .main-content {
+            margin-top: 60px; /* Assure que le contenu principal soit en dessous de l'en-tête */
+        }
+        .search-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .search-box {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .loans-table {
+            width: 100%;
+            background: white;
+            border-radius: 5px;
+            border-collapse: collapse;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .loans-table th {
+            background: #f8f9fa;
+            padding: 12px;
+            text-align: left;
+            color: #666;
+            font-weight: 500;
+            border-bottom: 2px solid #eee;
+        }
+        .loans-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        .status {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .status-accepted {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status-rejected {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .action-icons {
+            display: flex;
+            gap: 10px;
+        }
+        .action-icons img {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        .products-cell {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .products-cell img {
+            width: 30px;
+            height: 30px;
+        }
+        .edit-form {
+            display: none;
+            gap: 10px;
+        }
+        .edit-form {
+    display: none; /* Hide by default */
+    gap: 10px;
+    align-items: center; /* Center the items vertically */
+    margin-top: 20px; /* Add space above the form */
+    padding: 10px; /* Add padding */
+    background-color: #f8f9fa; /* Light background */
+    border: 1px solid #ccc; /* Border around the form */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+#status-select {
+    padding: 10px; /* Padding for better click area */
+    border: 1px solid #ddd; /* Border for the select */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    background-color: #ffffff; /* White background for the select */
+    cursor: pointer; /* Pointer cursor */
+    transition: border-color 0.3s; /* Smooth transition for border */
+}
+
+#status-select:focus {
+    border-color: #007bff; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+.edit-form button {
+    padding: 10px 15px; /* Padding for the button */
+    background-color: #007bff; /* Primary color for the button */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s; /* Smooth transition for background */
+}
+
+.edit-form button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <img src="assets/images/logo.png" alt="BKJA Électroménagers">
+            <nav>
+                <a href="smart.html"><img src="assets/images/maison.png" alt="Dashboard">DASHBOARD</a>
+                <a href="partenaire.html"><img src="assets/images/partenaire.png" alt="Partenaires">PARTENAIRES</a>
+                <a href="validation.html"><img src="assets/images/valid.png" alt="Validation">VALIDATION</a>
+                <a href="caisse.html"><img src="assets/images/caiss.png" alt="Caisse">CAISSE</a>
+                <a href="#"><img src="assets/images/para.png" alt="Paramètres">PARAMÈTRES</a>
+            </nav>
+        </div>
+        <div class="main-content">
+            <header class="header">
+                <h2>VALIDATION DE DEMANDES DE PRÊT</h2>
+            </header>
+            <h2>BIENVENUE CHER ADMINISTRATEUR</h2>
+
+            <!-- Search Container with H3 moved to the left -->
+            <div class="search-container">
+                <h3>COMMANDE</h3>
+                <input type="text" class="search-box" placeholder="Rechercher par date, client..." oninput="filterTable()">
+            </div>
+
+            <table class="loans-table">
+                <thead>
+                    <tr>
+                        <th>ID Client</th>
+                        <th>Produits</th>
+                        <th>Date</th>
+                        <th>Client</th>
+                        <th>Revenue</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="loans-tbody">
+                    <tr>
+                        <td>#53200001</td>
+                        <td class="products-cell">
+                            <img src="/api/placeholder/30/30" alt="Product">
+                            <span>3 Articles</span>
+                        </td>
+                        <td>10 Jan 2024</td>
+                        <td>Ronald Kouakou</td>
+                        <td>250 000 XOF</td>
+                        <td><span class="status status-rejected">Pas accepté</span></td>
+                        <td class="action-icons">
+                            <img src="assets/images/ecrire.png" alt="Edit" onclick="editStatus(this)">
+                            <img src="assets/images/poubelle.png" alt="Delete" onclick="deleteRow(this)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#53200002</td>
+                        <td class="products-cell">
+                            <img src="/api/placeholder/30/30" alt="Product">
+                            <span>5 Articles</span>
+                        </td>
+                        <td>11 Jan 2024</td>
+                        <td>Jean Michel</td>
+                        <td>350 000 XOF</td>
+                        <td><span class="status status-accepted">Accepté</span></td>
+                        <td class="action-icons">
+                            <img src="assets/images/ecrire.png" alt="Edit" onclick="editStatus(this)">
+                            <img src="assets/images/poubelle.png" alt="Delete" onclick="deleteRow(this)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="edit-form" class="edit-form">
+                <select id="status-select">
+                    <option value="pending">En attente</option>
+                    <option value="accepted">Accepté</option>
+                    <option value="rejected">Pas accepté</option>
+                </select>
+                <button onclick="updateStatus()">Valider</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentRow;
+
+        function editStatus(element) {
+            currentRow = element.closest('tr');
+            document.getElementById('edit-form').style.display = 'flex';
+        }
+
+        function updateStatus() {
+            const status = document.getElementById('status-select').value;
+            const statusText = {
+                pending: 'En attente',
+                accepted: 'Accepté',
+                rejected: 'Pas accepté'
+            };
+            const statusClass = {
+                pending: 'status status-pending',
+                accepted: 'status status-accepted',
+                rejected: 'status status-rejected'
+            };
+            currentRow.querySelector('.status').textContent = statusText[status];
+            currentRow.querySelector('.status').className = statusClass[status];
+            document.getElementById('edit-form').style.display = 'none';
+        }
+
+        function deleteRow(element) {
+            const row = element.closest('tr');
+            row.remove();
+        }
+
+        function filterTable() {
+            const input = document.querySelector('.search-box');
+            const filter = input.value.toLowerCase();
+            const rows = document.querySelectorAll('#loans-tbody tr');
+
+            rows.forEach(row => {
+                const textContent = row.textContent.toLowerCase();
+                row.style.display = textContent.includes(filter) ? '' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>

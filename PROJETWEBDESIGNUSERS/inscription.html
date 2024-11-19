@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Application</title>
+    <link rel="stylesheet" href="inscription.css">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="Logo BKJA" />
+            </div>
+            <div class="nav-center">
+                <a href="categories.html"><span>CATEGORIES</span></a>
+                <a href="nouveaute.html"><span>NOUVEAUTÉS</span></a>
+                <a href="promotion.html"><span>PROMOTION</span></a>
+                <a href="offrespartenaires.html"><span>OFFRES PARTENAIRES</span></a>
+            </div>
+            <div class="nav-icons">
+                <button id="search-button" class="icon-btn">
+                    <img src="assets/images/rech.png" alt="Recherche" />
+                </button>
+                <div id="search-bar" class="search-bar">
+                    <input type="text" placeholder="Rechercher..." />
+                </div>
+                <a href="inscription.php" id="profile-link">
+                    <img src="assets/images/profil.png" alt="Connexion" id="profile-image" />
+                </a>
+                <button id="cart-button" class="icon-btn">
+                    <img src="assets/images/panier.png" alt="Panier" />
+                </button>
+                <!-- Icône de déconnexion -->
+                <?php if (isset($_SESSION['utilisateur'])): ?>
+                    <form method="post" class="logout-form">
+                        <button type="submit" name="deconnexion" class="icon-btn">
+                            <img src="assets/images/deconnexion.png" alt="Déconnexion" />
+                        </button>
+                    </form>
+                <?php endif; ?>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <!-- Formulaire d'inscription -->
+            <div id="form-signup" class="form-container sign-up-container">
+                <form action="inscription.php" method="POST">
+                    <h2>Inscription</h2>
+                    <input type="text" name="nom" placeholder="Nom" required />
+                    <input type="text" name="prenom" placeholder="Prénom" required />
+                    <input type="email" name="email" placeholder="Email" required />
+                    <input type="password" name="mot_de_passe" placeholder="Mot de passe" required />
+                    <button type="submit" name="inscription">S'inscrire</button>
+                </form>
+            </div>
+            
+            <!-- Formulaire de connexion -->
+            <div id="form-signin" class="form-container sign-in-container">
+              <form action="inscription.php" method="POST">
+                  <h2>Connexion</h2>
+                  <input type="email" name="email" placeholder="Email" required />
+                  <input type="password" name="mot_de_passe" placeholder="Mot de passe" required />
+                  <button type="submit" name="connexion">Se connecter</button>
+              </form>
+          </div>
+
+            <div class="form-toggle">
+                <div id="toggle-signup" class="toggle sign-up">Inscription</div>
+                <div id="toggle-signin" class="toggle sign-in">Connexion</div>
+            </div>
+        </div>
+        <section id="service-card">
+            <div class="card">
+                <div class="service-item">
+                    <div class="icon-container">
+                        <img src="assets/images/Vector2.png" alt="Livraison gratuite" class="icon" />
+                    </div>
+                    <h3>Livraison Gratuite</h3>
+                    <p>Profitez de la livraison gratuite sur toutes vos commandes.</p>
+                </div>
+                <div class="service-item">
+                    <div class="icon-container">
+                        <img src="assets/images/Vector1.png" alt="Qualité garantie" class="icon" />
+                    </div>
+                    <h3>Politique de retour 15 jours</h3>
+                    <p>Vous avez jusqu’à 15 jours pour changer d’avis et on s’occupe du reste</p>
+                </div>
+                <div class="service-item">
+                    <div class="icon-container">
+                        <img src="assets/images/Group.png" alt="Service Client" class="icon" />
+                    </div>
+                    <h3>Service Client</h3>
+                    <p>Notre équipe est à votre disposition pour répondre à toutes vos questions.</p>
+                </div>
+                <div class="service-item">
+                    <div class="icon-container">
+                        <img src="assets/images/Vector.png" alt="Paiement Sécurisé" class="icon" />
+                    </div>
+                    <h3>Paiement Sécurisé</h3>
+                    <p>Profitez d'une expérience d'achat sécurisée avec nos options de paiement.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="footer-container">
+            <!-- Section Aide & FAQ -->
+            <div class="help-faq">
+                <h3>Aide et FAQ</h3>
+                <ul>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                </ul>
+            </div>
+            <!-- Section Paiement sécurisé -->
+            <div class="secure-payment">
+                <h3>Paiement sécurisé</h3>
+                <ul class="payment-icons">
+                    <li><img src="assets/images/visa.png" alt="Visa"></li>
+                    <li><img src="assets/images/mastercard.png" alt="Mastercard"></li>
+                    <li><img src="assets/images/djamo.png" alt="Djamo"></li>
+                    <li><img src="assets/images/africard.png" alt="Africard"></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="inscription.js"></script>
+</body>
+</html>

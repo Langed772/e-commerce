@@ -1,0 +1,384 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+  }
+  
+  #navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .nav-center {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+  }
+  
+  .nav-center a {
+    text-decoration: none; /* Supprime les soulignements */
+    color: black;
+    font-weight: bold;
+    margin: 0 15px;
+    font-size: 16px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-center span:hover {
+    color: #007bff;
+  }
+  
+  .nav-icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 15px;
+    padding: 0;
+  }
+  
+  .icon-btn img {
+    width: 24px;
+    height: 24px;
+    filter: invert(0.8);
+  }
+  
+  .icon-btn:hover img {
+    filter: invert(0);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+  h2{
+    text-align: center;
+    margin-bottom: 70px;
+  }
+  
+  header {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+  }
+  
+  #navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  
+  .nav-center a {
+    text-decoration: none; /* Supprime les soulignements */
+    color: black;
+    font-weight: bold;
+    margin: 0 15px;
+    font-size: 16px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+  
+  
+  .nav-center span {
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    margin: 0 15px;
+    font-size: 16px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-center span:hover {
+    color: #007bff;
+  }
+  
+  .nav-icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 15px;
+    padding: 0;
+  }
+  
+  .icon-btn img {
+    width: 24px;
+    height: 24px;
+    filter: invert(0.8);
+  }
+  
+  .icon-btn:hover img {
+    filter: invert(0);
+  }
+  
+  .badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    display: none; /* Initially hidden */
+  }
+  
+
+
+  .container {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+
+.product-details {
+    display: flex;
+    align-items: center; 
+    font-size: 2em;/* Centre verticalement les éléments */
+}
+
+.product-info {
+    flex: 1; /* Prend tout l'espace restant à gauche */
+    margin-right: 20px; /* Espace entre l'image et les informations */
+}
+
+.product-image {
+    width: 300px; /* Largeur de l'image, ajustez si nécessaire */
+    height: auto; /* Maintient le ratio d'aspect */
+}
+
+#add-to-cart {
+    display: block;
+    width: 20%;
+    padding: 12px 20px;
+    margin-top: 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+
+
+
+h1, h2 {
+    color: #333;
+}
+
+.description, .advantages, .maintenance {
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+
+#service-card {
+    padding: 130px 20px; /* Espacement autour de la section */
+    background-color: #F5F5F5; /* Couleur de fond */
+}
+
+.card {
+    width: 100%; /* Largeur de la carte */
+    max-width: 100%; /* Limite la largeur maximale */
+    background-color: #F5F5F5; /* Couleur de fond de la carte */
+    border-radius: 10px; /* Arrondi des coins */
+    padding: 50px; /* Espacement interne */
+    display: flex; /* Utilise Flexbox pour aligner les éléments à l'intérieur de la carte */
+    justify-content: space-between; /* Espace entre les éléments */
+}
+
+.service-item {
+    text-align: center; /* Aligne le texte au centre */
+    flex: 1; /* Permet aux éléments de prendre une largeur égale */
+    margin: 0 30px; /* Espacement horizontal entre les éléments */
+}
+
+.icon-container {
+    margin-bottom: 10px; /* Espacement en bas de l'icône */
+}
+
+.icon {
+    width: 25px; /* Ajustez la taille de l'icône */
+    height: auto; /* Garde la proportion de l'icône */
+}
+
+h3 {
+    font-size: 20px; /* Taille du titre */
+    margin-bottom: 5px; /* Espacement en bas du titre */
+}
+
+p {
+    font-size: 14px; /* Taille du texte du paragraphe */
+    color: #000000; /* Couleur du texte */
+    margin-bottom: 20px;
+}
+
+
+#footer {
+    background-color: #000; /* Fond noir */
+    color: #fff; /* Texte blanc */
+    padding: 50px 20px; /* Espacement interne */
+    text-align: center;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: center; /* Centrage horizontal des sections */
+    gap: 100px; /* Espace entre les colonnes */
+    margin-bottom: 40px; /* Espace au-dessous des sections principales */
+  }
+  
+  .newsletter {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .newsletter h3 {
+    font-size: 18px;
+  }
+  
+  .newsletter form {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espace entre le champ et le bouton */
+  }
+  
+  .newsletter input[type="email"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #fff; /* Ajoute une bordure blanche */
+    width: 250px; /* Largeur du champ email */
+    background-color: #000000; /* Couleur du bouton */
+    color: #fff; /* Couleur du texte dans le champ */
+  }
+  
+  .newsletter button {
+    padding: 10px 20px;
+    background-color: #000000; /* Couleur du bouton */
+    border: 1px solid #ffffff; /* Bordure blanche */
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .help-faq, .secure-payment, .follow-us {
+    text-align: left;
+  }
+  
+  .help-faq h3,
+  .secure-payment h3,
+  .follow-us h3 {
+    font-size: 18px; /* Taille du titre */
+    margin-bottom: 15px; /* Espace sous le titre */
+  }
+  
+  .help-faq ul,
+  .secure-payment ul,
+  .follow-us ul {
+    list-style: none; /* Supprime les puces */
+    padding: 0;
+  }
+  
+  .help-faq ul li,
+  .secure-payment ul li,
+  .follow-us ul li {
+    margin-bottom: 10px; /* Espace entre les éléments de la liste */
+  }
+  
+  .help-faq ul li a,
+  .follow-us ul li span {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .payment-icons img,
+  .social-icons img {
+    width: 15px; /* Ajuste la taille des icônes de paiement et de réseaux sociaux */
+    margin-right: 10px; /* Espace à droite des icônes */
+  }
+  
+  .payment-icons,
+  .social-icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .social-icons li {
+    display: flex;
+    align-items: center;
+  }
+  
+  .social-icons li span {
+    margin-left: 5px;
+  }
+  
+  /* Section Tous droits réservés */
+  .footer-bottom {
+    margin-top: 30px; /* Espace au-dessus de la section */
+  }
+  
+  .footer-bottom p {
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .product-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+  .product-description img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  .product-description h2, .product-description p {
+    margin-bottom: 10px;
+  }

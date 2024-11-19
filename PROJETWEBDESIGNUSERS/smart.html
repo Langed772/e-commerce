@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BKJA Dashboard</title>
+    <style>
+        /* Styles CSS ici */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+        }
+        .dashboard {
+            display: flex;
+            height: 100%;
+        }
+        .sidebar {
+            width: 180px;
+            background-color: #eeeeee;
+            padding: 20px;
+            color: black;
+            position: fixed; /* Fixe la sidebar */
+            height: 100%; /* Prend toute la hauteur */
+        }
+        .sidebar img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .sidebar nav a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .sidebar nav a:hover {
+            background-color: #ffffff;
+        }
+        .sidebar nav img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #ecf0f1;
+            margin-left: 205px; /* Espace pour la sidebar */
+            margin-top: 60px; /* Espace pour le header */
+        }
+        .header {
+            background-color: #949494;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            position: fixed; /* Fixe le header */
+            width: calc(100% - 250px); /* Ajuste la largeur pour éviter le chevauchement */
+            left: 220px; /* Espace pour la sidebar */
+            top: 0; /* Positionnement en haut */
+        }
+        .header button {
+            padding: 8px 12px;
+            background-color: #f6f6f6;
+            color: black; /* Changer la couleur du texte pour le contraste */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .header button:hover {
+            background-color: #e0e0e0; /* Changer la couleur au survol */
+        }
+        .kpi-cards {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .kpi-card {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            width: 22%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .kpi-card h3 {
+            margin: 0 0 10px;
+        }
+        .kpi-card span {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+        .chart-container {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .chart {
+            flex-grow: 2;
+            height: 300px;
+            background-color: #fff;
+            margin-right: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+        .map-chart {
+            flex-grow: 1;
+            height: 300px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        th, td {
+            border: 1px solid #ffffff;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        td {
+            background-color: #f9f9f9;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <img src="assets/images/logo.png" alt="BKJA Électroménagers">
+            <nav id="sidebar-nav"></nav>
+        </div>
+        <div class="main-content">
+            <header class="header">
+                <h2>VUE D'ENSEMBLE</h2>
+                <button><a href="ajoutpart.html" style="text-decoration: none; color: inherit;">AJOUTER UN INTERMÉDIAIRE</a></button>
+            </header>
+            <h2>BIENVENUE SMART</h2>
+            <div class="kpi-cards" id="kpi-cards"></div>
+            <div class="chart-container">
+                <div class="chart" id="revenue-chart">
+                    <!-- Le graphique sera inséré ici par JavaScript -->
+                </div>
+                <div class="map-chart">
+                    <h3>Revenue par Commune</h3>
+                    <!-- Placeholder pour la carte -->
+                    <ul id="revenue-by-commune"></ul>
+                </div>
+            </div>
+            <div>
+                <h3>Meilleures Ventes</h3>
+                <table id="best-sellers"></table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Données
+        const navItems = [
+        { imgSrc: 'assets/images/maison.png', text: 'DASHBOARD', href: 'smart.html' },
+        { imgSrc: 'assets/images/partenaire.png', text: 'PARTENAIRES', href: 'partenaire.html' },
+        { imgSrc: 'assets/images/valid.png', text: 'VALIDATION', href: 'validation.html' },
+        { imgSrc: 'assets/images/caiss.png', text: 'CAISSE', href: 'caisse.html' },
+        { imgSrc: 'assets/images/para.png', text: 'PARAMÈTRES', href: 'parametres.html' }
+        ];
+
+
+        const kpiData = [
+            { title: 'REVENUE', value: '33K XOF', change: '+11.01%' },
+            { title: 'VISITES', value: '350K', change: '+9.15%' },
+            { title: 'COMMANDES', value: '27', change: '-0.56%' },
+            { title: 'UTILISATEURS ACTIFS', value: '250K', change: '-1.48%' }
+        ];
+
+        const revenueByCommune = [
+            { name: 'Angré', percentage: '49%' },
+            { name: 'Koumassi', percentage: '25%' },
+            { name: 'Cocody St Jean', percentage: '15%' },
+            { name: 'Bingerville', percentage: '11%' }
+        ];
+
+        const bestSellers = [
+            { name: 'LG-RÉFRIGÉRATEUR 3 VOLETS', price: '155 000 XOF', sold: 10, sales: '1 550 000 XOF' },
+            { name: 'SAMSUNG-MINI RÉFRIGÉRATEUR 2 VOLETS', price: '90 900 XOF', sold: 7, sales: '636 300 XOF' },
+           
+        ];
+
+        // Fonctions pour remplir le contenu
+        function populateSidebar() {
+        const nav = document.getElementById('sidebar-nav');
+        navItems.forEach(item => {
+            const a = document.createElement('a');
+            a.href = item.href; // Set the link to the href from navItems
+            a.innerHTML = `<img src="${item.imgSrc}" alt="${item.text}"> ${item.text}`;
+            nav.appendChild(a);
+        });
+    }
+        function populateKPICards() {
+            const container = document.getElementById('kpi-cards');
+            kpiData.forEach(kpi => {
+                const card = document.createElement('div');
+                card.className = 'kpi-card';
+                card.innerHTML = `<h3>${kpi.title}</h3><p>${kpi.value}<span>${kpi.change}</span></p>`;
+                container.appendChild(card);
+            });
+        }
+
+        function populateRevenueByCommune() {
+            const ul = document.getElementById('revenue-by-commune');
+            revenueByCommune.forEach(commune => {
+                const li = document.createElement('li');
+                li.innerText = `${commune.name} - ${commune.percentage}`;
+                ul.appendChild(li);
+            });
+        }
+
+        function populateBestSellers() {
+            const table = document.getElementById('best-sellers');
+            table.innerHTML = `<tr><th>Produit</th><th>Prix</th><th>Vendus</th><th>Ventes Totales</th></tr>`;
+            bestSellers.forEach(seller => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${seller.name}</td><td>${seller.price}</td><td>${seller.sold}</td><td>${seller.sales}</td>`;
+                table.appendChild(row);
+            });
+        }
+
+        // Appel des fonctions pour remplir le contenu
+        populateSidebar();
+        populateKPICards();
+        populateRevenueByCommune();
+        populateBestSellers();
+
+
+
+        
+    </script>
+</body>
+</html>

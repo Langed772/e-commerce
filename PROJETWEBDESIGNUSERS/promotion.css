@@ -1,0 +1,341 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* Header Styles */
+header {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.nav-center {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.nav-center a, .nav-center span {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  margin: 0 15px;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-center span:hover, .nav-center a:hover {
+  color: #007bff;
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 15px;
+  padding: 0;
+}
+
+.icon-btn img {
+  width: 24px;
+  height: 24px;
+  filter: invert(0.8);
+}
+
+.icon-btn:hover img {
+  filter: invert(0);
+}
+
+/* Fixed Image Section */
+.fixed-image {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url('assets/images/frigo_background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 130px;
+}
+
+.centered-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.centered-text h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+#connect-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: transparent;
+  border: 2px solid #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#connect-button:hover {
+  background-color: black;
+}
+
+/* Product Grid */
+.product-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Product Card */
+.product-card {
+  width: 23%;
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.product-card h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.product-card p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.product-card .price {
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.product-card button {
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.product-card:hover button {
+  opacity: 1;
+  visibility: visible;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive Product Grid */
+@media (max-width: 768px) {
+  .product-card {
+    width: 48%;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    width: 100%;
+  }
+}
+
+/* Service Section */
+#service-card {
+  padding: 130px 20px;
+  background-color: #F5F5F5;
+}
+
+.card {
+  width: 100%;
+  background-color: #F5F5F5;
+  border-radius: 10px;
+  padding: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.service-item {
+  text-align: center;
+  flex: 1;
+  margin: 0 30px;
+}
+
+.icon-container {
+  margin-bottom: 10px;
+}
+
+.icon {
+  width: 25px;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+p {
+  font-size: 14px;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+/* Footer Section */
+#footer {
+  background-color: #000;
+  color: #fff;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  margin-bottom: 40px;
+}
+
+.newsletter {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.newsletter h3 {
+  font-size: 18px;
+}
+
+.newsletter form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.newsletter input[type="email"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  width: 250px;
+  background-color: #000;
+  color: #fff;
+}
+
+.newsletter button {
+  padding: 10px 20px;
+  background-color: #000;
+  border: 1px solid #fff;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.help-faq, .secure-payment, .follow-us {
+  text-align: left;
+}
+
+.help-faq h3, .secure-payment h3, .follow-us h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.help-faq ul, .secure-payment ul, .follow-us ul {
+  list-style: none;
+  padding: 0;
+}
+
+.help-faq ul li, .secure-payment ul li, .follow-us ul li {
+  margin-bottom: 10px;
+}
+
+.help-faq ul li a, .follow-us ul li span {
+  color: #fff;
+  text-decoration: none;
+}
+
+.payment-icons img, .social-icons img {
+  width: 15px;
+  margin-right: 10px;
+}
+
+.payment-icons, .social-icons {
+  display: flex;
+  align-items: center;
+}
+
+.social-icons li {
+  display: flex;
+  align-items: center;
+}
+
+.social-icons li span {
+  margin-left: 5px;
+}
+
+.footer-bottom {
+  margin-top: 30px;
+}
+
+.footer-bottom p {
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  margin-top: 20px;
+}

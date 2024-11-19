@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Application</title>
+  <link rel="stylesheet" href="Pageaccueil.css">
+</head>
+<body>
+  <header>
+    <nav id="navbar">
+      <div class="logo">
+        <img src="assets/images/logo.png" alt="Logo BKJA" />
+      </div>
+      <div class="nav-center">
+        <a href="categories.html"><span>CATEGORIES</span></a>
+        <a href="nouveaute.html"><span>NOUVEAUTÉS</span></a>
+        <a href="promotion.html"><span>PROMOTION</span></a>
+        <a href="offrespartenaires.html"><span>OFFRES PARTENAIRES</span></a>
+      </div>
+      <div class="nav-icons">
+        <button id="search-button" class="icon-btn">
+          <img src="assets/images/rech.png" alt="Recherche" />
+        </button>
+        <div id="search-bar" class="search-bar">
+          <input type="text" placeholder="Rechercher..." />
+        </div>
+        <a href="inscription.html" id="profile-link">
+          <img src="assets/images/profil.png" alt="Connexion" id="profile-image" />
+        </a>
+        <button id="cart-button" class="icon-btn">
+          <img src="assets/images/panier.png" alt="Panier" />
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Carousel Section -->
+    <div id="carousel" class="carousel">
+      <div class="carousel-item active" style="background-image: url('assets/images/NOUVEAUTE.png');"></div>
+      <div class="carousel-item" style="background-image: url('assets/images/image3.png');"></div>
+      <div class="carousel-item" style="background-image: url('assets/images/image4.png');"></div>
+    </div>
+    <div class="centered-text">
+        <h1>VOS APPAREILS<br>ELECTROMÉNAGERS<br>À PORTÉE DE MAIN</h1>
+        <button id="connect-button">
+          <a href="inscription.html">CONNECTER-VOUS</a>
+        </button>
+              </div>
+  
+      <!-- Section Nouveautés -->
+      <section id="nouveautes">
+        <h4>Nouveautés</h4>
+        <br><br><br>
+        <h2>Quelques produits pour vous</h2>
+        <div class="product-grid">
+          <div class="product-card">
+            <img src="assets/images/product1.png" alt="Produit 1">
+            <h3>SMART TECHNOLOGIES - machine à laver</h3>
+            <p>Un excellent produit pour votre maison.</p>
+            <div class="price">60 000 XOF</div>
+            <br>
+            <br>
+            <br>
+            <button>Ajouter au panier</button>
+          </div>
+          <div class="product-card">
+            <img src="assets/images/product2.png" alt="Produit 2">
+            <h3>haier - MIXEUR 2.3</h3>
+            <p>Un produit indispensable pour votre cuisine.</p>
+            <div class="price">20 000 XOF</div>
+            <br>
+            <br>
+            <br>
+            <button>Ajouter au panier</button>
+          </div>
+          <div class="product-card">
+            <img src="assets/images/product3.png" alt="Produit 3">
+            <h3>BOSH - Thermos 2500FE</h3>
+            <p>Ce produit rendra votre vie plus facile.</p>
+            <div class="price">60 000 XOF</div>
+            <br>
+            <br>
+            <br>
+            <button>Ajouter au panier</button>
+          </div>
+          <div class="product-card">
+            <img src="assets/images/lav.png" alt="Produit 4">
+            <h3>freezer - congélateur à 2 vitres</h3>
+            <p>Parfait pour améliorer votre quotidien.</p>
+            <div class="price">110 000 XOF</div>
+            <br>
+            <br>
+            <br>
+            <button>Ajouter au panier</button>
+          </div>
+        </div>
+      </section>
+      <section id="que-faisons-nous">
+        <div class="content">
+            <div class="text-container">
+                <div class="icon-container">
+                    <img src="assets/images/Vector4.png" alt="Que faisons-nous ?" class="icon" />
+                </div>
+                <h2>Que faisons-nous ?</h2>
+                <p>
+                    BKJA Electroménagers, votre spécialiste en appareils de qualité pour la maison.<br>
+                    Nous offrons une large gamme de produits fiables et innovants, conçus pour<br>
+                    simplifier votre quotidien. Faites-nous confiance pour des solutions durables<br>
+                    et performantes à des prix compétitifs.
+                </p>
+            </div>
+            <div class="image-container">
+                <img src="assets/images/que.png" alt="Electroménagers" class="appliance-image">
+            </div>
+        </div>
+    </section>
+    
+      
+      <section id="partenaires">
+        <img src="assets/images/part.png" alt="Partenaire" class="partner-image" />
+        <div class="partner-text">
+            <h2>Partenaire</h2>
+            <h4><strong>Ils nous font confiance</strong></h4>
+            <p>
+                Chez BKJA Électroménagers, nous collaborons avec des partenaires de confiance pour vous offrir une sélection encore plus vaste et innovante de produits de qualité. Découvrez les offres exclusives de nos partenaires dans notre rubrique dédiée.
+            </p>
+            <div class="partner-logos">
+                <img src="assets/images/log1.png" alt="LG" class="logo">
+                <img src="assets/images/log2.png" alt="Haier" class="logo">
+                <img src="assets/images/log3.png" alt="Samsung" class="logo">
+                <!-- Ajoutez d'autres logos ici -->
+            </div>
+            <button class="discover-button">Découvrez</button>
+        </div>
+    </section>
+    
+      
+      <section id="avis">
+        <h2>Leur avis disent tout</h2>
+        <div class="avis-container">
+          <div class="avis-card">
+            <div class="stars">★★★★★</div>
+            <p>Produit exceptionnel, je recommande vivement !</p>
+            <div class="author">
+              <img src="assets/images/prof1.png" alt="Profil utilisateur 1" class="profile-pic" />
+              <span>Yoboua jean</span>
+            </div>
+          </div>
+          
+          <div class="avis-card">
+            <div class="stars">★★★★☆</div>
+            <p>Très bon rapport qualité/prix.</p>
+            <div class="author">
+              <img src="assets/images/prof2.png" alt="Profil utilisateur 2" class="profile-pic" />
+              <span>Coulibaly Karim</span>
+            </div>
+          </div>
+          
+          <div class="avis-card">
+            <div class="stars">★★★☆☆</div>
+            <p>Le produit est bon mais peut être amélioré.</p>
+            <div class="author">
+              <img src="assets/images/prof4.png" alt="Profil utilisateur 3" class="profile-pic" />
+              <span>N'doua Cédric</span>
+            </div>
+          </div>
+      
+          <div class="avis-card">
+            <div class="stars">★★★★★</div>
+            <p>Excellent service client et produit de qualité !</p>
+            <div class="author">
+              <img src="assets/images/prof6.png" alt="Profil utilisateur 4" class="profile-pic" />
+              <span>Lago Grâce</span>
+            </div>
+          </div>
+      
+          <div class="avis-card">
+            <div class="stars">★★★★☆</div>
+            <p>Livraison rapide et produit conforme.</p>
+            <div class="author">
+              <img src="assets/images/prof5.png" alt="Profil utilisateur 5" class="profile-pic" />
+              <span>Lida Grace </span>
+            </div>
+          </div>
+      
+          <div class="avis-card">
+            <div class="stars">★★★☆☆</div>
+            <p>Pas mal mais je m'attendais à mieux.</p>
+            <div class="author">
+              <img src="assets/images/prof3.png" alt="Profil utilisateur 6" class="profile-pic" />
+              <span>Gbanan Aude Jemima </span>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section id="promotion">
+        <h4>Promotion</h4>
+        <h2>Jusqu’à +60% de réduction <br>
+            sur tous vos produits</h2>
+        <p>
+            Profitez de notre grande promotion sur une large sélection d'appareils électroménagers. Faites des économies tout en vous offrant des produits de qualité. Ne manquez pas cette occasion !
+        </p>
+        <button class="btn-decouvrir">Découvrir</button>
+       </section>
+    </main>
+
+    <footer id="footer">
+      <div class="footer-container">
+        
+        <!-- Section Aide & FAQ -->
+        <div class="help-faq">
+          <h3>Aide et FAQ</h3>
+          <ul>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Politique de confidentialité</a></li>
+          </ul>
+        </div>
+    
+        <!-- Section Paiement sécurisé -->
+        <div class="secure-payment">
+          <h3>Paiement sécurisé</h3>
+          <ul class="payment-icons">
+            <li><img src="assets/images/visa.png" alt="Visa"></li>
+            <li><img src="assets/images/mastercard.png" alt="Mastercard"></li>
+            <li><img src="assets/images/djamo.png" alt="Djamo"></li>
+            <li><img src="assets/images/push.png" alt="Push"></li>
+          </ul>
+        </div>
+    
+        <!-- Section Suivez-nous -->
+        <div class="follow-us">
+          <h3>Suivez-nous</h3>
+          <ul class="social-icons">
+            <li>
+              <img src="assets/images/facebook.png" alt="Facebook">
+              <span>Facebook</span>
+            </li>
+            <li>
+              <img src="assets/images/Instragram.png" alt="Instagram">
+              <span>Instagram</span>
+            </li>
+            <li>
+              <img src="assets/images/x.png" alt="Twitter">
+              <span>Twitter</span>
+            </li>
+            <li>
+              <img src="assets/images/link.png" alt="LinkedIn">
+              <span>LinkedIn</span>
+            </li>
+          </ul>
+        </div>
+        
+      </div>
+    
+      <!-- Section de la newsletter -->
+      <div class="newsletter">
+        <h3>Nouvellelettres</h3>
+        <form action="#" method="post">
+          <input type="email" placeholder="Votre email" required>
+          <button type="submit">S'abonner</button>
+        </form>
+      </div>
+      <div class="footer-bottom">
+          <p>&copy; 2024 BKJA Électroménagers. Tous droits réservés.</p>
+        </div>
+    </footer>
+    
+    <script src="Pageaccueil.js"></script>
+</body>
+</html>

@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Application</title>
+
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.nav-center {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.nav-center a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  margin: 0 15px;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.nav-center span:hover {
+  color: #007bff;
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 15px;
+  padding: 0;
+}
+
+.icon-btn img {
+  width: 24px;
+  height: 24px;
+  filter: invert(0.8);
+}
+
+.icon-btn:hover img {
+  filter: invert(0);
+}
+
+/* Image fixe */
+.fixed-image {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Hauteur de la fenêtre */
+  background-image: url('assets/images/frigo_background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 130px;
+}
+
+/* Centred text and button */
+.centered-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.centered-text h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+#connect-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: transparent;
+  border: 2px solid rgb(255, 255, 255);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#connect-button:hover {
+  background-color: black;
+}
+
+/* Grille de produits */
+.product-grid {
+  display: flex;
+  justify-content: space-around; /* Espacement entre les produits */
+  flex-wrap: wrap;
+  gap: 20px; /* Ajoute un espace entre les cartes */
+}
+
+.product-card {
+  width: 30%; /* Chaque carte prend 30% de la largeur disponible */
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.product-card h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.product-card p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.product-card .price {
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.product-card button {
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.product-card:hover button {
+  opacity: 1;
+  visibility: visible;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .product-card {
+    width: 48%; /* 2 colonnes sur les tablettes */
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    width: 100%; /* 1 colonne sur mobile */
+  }
+
+  .product-card h3 {
+    font-size: 14px;
+  }
+
+  .product-card p {
+    font-size: 12px;
+  }
+
+  .product-card .price {
+    font-size: 16px;
+  }
+
+  .product-card button {
+    font-size: 12px;
+    padding: 8px 15px;
+  }
+}
+
+/* Section Services */
+#service-card {
+  padding: 130px 20px;
+  background-color: #F5F5F5;
+}
+
+.card {
+  width: 100%;
+  max-width: 100%;
+  background-color: #F5F5F5;
+  border-radius: 10px;
+  padding: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.service-item {
+  text-align: center;
+  flex: 1;
+  margin: 0 30px;
+}
+
+.icon-container {
+  margin-bottom: 10px;
+}
+
+.icon {
+  width: 25px;
+  height: auto;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+p {
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+/* Footer */
+#footer {
+  background-color: #000;
+  color: #fff;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  margin-bottom: 40px;
+}
+
+.newsletter {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.newsletter h3 {
+  font-size: 18px;
+}
+
+.newsletter form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.newsletter input[type="email"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  width: 250px;
+  background-color: #000000;
+  color: #fff;
+}
+
+.newsletter button {
+  padding: 10px 20px;
+  background-color: #000000;
+  border: 1px solid #ffffff;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.help-faq, .secure-payment, .follow-us {
+  text-align: left;
+}
+
+.help-faq h3,
+.secure-payment h3,
+.follow-us h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.help-faq ul,
+.secure-payment ul,
+.follow-us ul {
+  list-style: none;
+  padding: 0;
+}
+
+.help-faq ul li,
+.secure-payment ul li,
+.follow-us ul li {
+  margin-bottom: 10px;
+}
+
+.help-faq ul li a,
+.follow-us ul li span {
+  color: #fff;
+  text-decoration: none;
+}
+
+.payment-icons img,
+.social-icons img {
+  width: 15px;
+  margin-right: 10px;
+}
+
+.payment-icons,
+.social-icons {
+  display: flex;
+  align-items: center;
+}
+
+.social-icons li {
+  display: flex;
+  align-items: center;
+}
+
+.social-icons li span {
+  margin-left: 5px;
+}
+
+.footer-bottom {
+  margin-top: 30px;
+}
+
+.footer-bottom p {
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  margin-top: 20px;
+}
+
+  /* ... Garder les styles existants ... */
+  .product-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+        .product-card {
+            width: 30%;
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="Logo BKJA" />
+            </div>
+            <div class="nav-center">
+                <a href="categories.html"><span>CATEGORIES</span></a>
+                <a href="nouveaute.html"><span>NOUVEAUTÉS</span></a>
+                <a href="promotion.html"><span>PROMOTION</span></a>
+                <a href="offrespartenaires.html"><span>OFFRES PARTENAIRES</span></a>
+            </div>
+            <div class="nav-icons">
+                <button id="search-button" class="icon-btn">
+                    <img src="assets/images/rech.png" alt="Recherche" />
+                </button>
+                <div id="search-bar" class="search-bar">
+                    <input type="text" placeholder="Rechercher..." />
+                </div>
+                <a href="inscription.html" id="profile-link">
+                    <img src="assets/images/profil.png" alt="Connexion" id="profile-image" />
+                </a>
+                <button id="cart-button" class="icon-btn">
+                    <img src="assets/images/panier.png" alt="Panier" />
+                    <span id="cart-badge" class="badge">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="fixed-image" style="background-image: url('assets/images/NOUVEAUTE.png');"></div>
+        <div class="centered-text">
+            <h1>NOUVEAUTÉS</h1>
+            <button id="connect-button">DECOUVRIR</button>
+        </div>
+        <h2>LES NOUVEAUX ARRIVAGES</h2>
+
+       
+        <div class="product-grid" id="product-grid">
+            <!-- Les produits seront ajoutés dynamiquement ici -->
+        </div>      
+        
+
+        <section id="service-card">
+            <div class="card">
+              <div class="service-item">
+                <div class="icon-container">
+                  <img src="assets/images/Vector2.png" alt="Livraison gratuite" class="icon" />
+                </div>
+                <h3>Livraison Gratuite</h3>
+                <p>Profitez de la livraison gratuite sur toutes vos commandes.</p>
+              </div>
+              
+              <div class="service-item">
+                <div class="icon-container">
+                  <img src="assets/images/Vector1.png" alt="Politique de retour 15 jours" class="icon" />
+                </div>
+                <h3>Politique de retour 15 jours</h3>
+                <p>Vous avez jusqu’à 15 jours pour changer d’avis et on s’occupe du reste</p>
+              </div>
+              
+              <div class="service-item">
+                <div class="icon-container">
+                  <img src="assets/images/Group.png" alt="Service Client" class="icon" />
+                </div>
+                <h3>Service Client</h3>
+                <p>Notre équipe est à votre disposition pour répondre à toutes vos questions.</p>
+              </div>
+              
+              <div class="service-item">
+                <div class="icon-container">
+                  <img src="assets/images/Vector.png" alt="Paiement Sécurisé" class="icon" />
+                </div>
+                <h3>Paiement Sécurisé</h3>
+                <p>Profitez d'une expérience d'achat sécurisée avec nos options de paiement.</p>
+              </div>
+            </div>
+          </section>
+
+
+    </main>
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="help-faq">
+                <h3>Aide et FAQ</h3>
+                <ul>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                </ul>
+            </div>
+            <div class="secure-payment">
+                <h3>Paiement sécurisé</h3>
+                <ul class="payment-icons">
+                    <li><img src="assets/images/visa.png" alt="Visa"></li>
+                    <li><img src="assets/images/mastercard.png" alt="Mastercard"></li>
+                    <li><img src="assets/images/djamo.png" alt="Djamo"></li>
+                    <li><img src="assets/images/push.png" alt="Push"></li>
+                </ul>
+            </div>
+            <div class="follow-us">
+                <h3>Suivez-nous</h3>
+                <ul class="social-icons">
+                    <li>
+                        <img src="assets/images/facebook.png" alt="Facebook">
+                        <span>Facebook</span>
+                    </li>
+                    <li>
+                        <img src="assets/images/Instragram.png" alt="Instagram">
+                        <span>Instagram</span>
+                    </li>
+                    <li>
+                        <img src="assets/images/x.png" alt="Twitter">
+                        <span>Twitter</span>
+                    </li>
+                    <li>
+                        <img src="assets/images/link.png" alt="LinkedIn">
+                        <span>LinkedIn</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 BKJA Électroménagers. Tous droits réservés.</p>
+        </div>
+    </footer>
+    <script>
+    // Sélection des éléments de la page
+const searchButton = document.getElementById('search-button');
+const searchBar = document.querySelector('#search-bar input');
+const cartButton = document.getElementById('cart-button');
+const cartBadge = document.getElementById('cart-badge');
+let cartCount = 0; // Compteur de produits dans le panier
+
+// Ajouter un événement pour la recherche en temps réel
+searchBar.addEventListener('input', function () {
+    const searchTerm = searchBar.value.toLowerCase();
+    const productCards = document.querySelectorAll('.product-card');
+    productCards.forEach(card => {
+        const productName = card.querySelector('h3').textContent.toLowerCase();
+        if (productName.includes(searchTerm)) {
+            card.style.display = 'block'; // Afficher le produit correspondant
+        } else {
+            card.style.display = 'none'; // Masquer les produits non correspondants
+        }
+    });
+});
+
+// Gestion du panier
+cartButton.addEventListener('click', function () {
+    cartCount++;
+    cartBadge.textContent = cartCount; // Mettre à jour le badge du panier
+});
+
+// Fonction pour charger et afficher les produits de la catégorie "nouveautés"
+function loadProducts() {
+    const productGrid = document.getElementById('product-grid');
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    
+    // Filtrer uniquement les produits de la catégorie "nouveautés"
+    const nouveautes = products.filter(product => product.category === 'nouveautes');
+    
+    // Vider la grille existante
+    productGrid.innerHTML = '';
+    
+    // Ajouter chaque produit à la grille
+    nouveautes.forEach(product => {
+    const productCard = document.createElement('div');
+    productCard.className = 'product-card';
+    productCard.setAttribute('data-name', product.name); // Ajout du nom du produit pour la recherche
+    productCard.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>${product.description}</p>
+        <div class="price">${product.price} XOF</div>
+        <br>
+        <button onclick="ajouterProduit('${product.name}', '${product.price}', '${product.image}')">Ajouter produit</button>
+    `;
+    productGrid.appendChild(productCard);
+});
+}
+// Charger les produits au chargement de la page
+window.addEventListener('load', loadProducts);
+
+// Ajoutez cette nouvelle fonction
+function ajouterProduit(nom, prix, image) {
+    // Stocker les informations du produit dans le localStorage
+    localStorage.setItem('produitAjoute', JSON.stringify({ nom, prix, image }));
+    // Rediriger vers la page detailprod.html
+    window.location.href = 'detailprod.html';
+}
+
+    </script>
+</body>
+</html>

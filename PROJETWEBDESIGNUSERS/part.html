@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BKJA Dashboard</title>
+</head>
+<body>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo h1, .logo p {
+    margin: 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+nav ul li {
+    margin: 15px 0;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+header h2 {
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.welcome {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.welcome h3 {
+    margin-top: 0;
+}
+
+.metrics {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.metric {
+    text-align: center;
+}
+
+.metric p {
+    margin: 0;
+}
+
+.actions button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.actions button:hover {
+    background-color: #0056b3;
+}
+
+.charts, .sales {
+    margin-bottom: 20px;
+}
+
+.chart {
+    margin-bottom: 20px;
+}
+
+.sales table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.sales th, .sales td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.sales th {
+    background-color: #f4f4f4;
+}
+
+    </style>   <div class="sidebar">
+        <div class="logo">
+            <h1>BKJA</h1>
+            <p>Électroménagers</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Partenaires</a></li>
+                <li><a href="#">Validation</a></li>
+                <li><a href="#">Commandes</a></li>
+                <li><a href="#">Caisse</a></li>
+                <li><a href="#">Paramètres</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header>
+            <h2>Partenaires</h2>
+        </header>
+        <section class="welcome">
+            <h3>Bienvenue cher partenaire LG</h3>
+            <div class="metrics">
+                <div class="metric">
+                    <p>Revenu</p>
+                    <h4>53K XOF</h4>
+                    <span class="positive">+11.01%</span>
+                </div>
+                <div class="metric">
+                    <p>Commandes</p>
+                    <h4>13</h4>
+                    <span class="negative">-0.56%</span>
+                </div>
+            </div>
+            <div class="actions">
+                <button onclick="window.location.href='ajouter_produit.html'">Ajouter un produit</button>
+                <button onclick="window.location.href='voir_commandes.html'">Voir commandes</button>
+            </div>
+        </section>
+        <section class="charts">
+            <div class="chart">
+                <h4>Revenu / Commandes - Cette semaine</h4>
+                <canvas id="revenueChart"></canvas>
+            </div>
+            <div class="chart">
+                <h4>Revenu par secteur</h4>
+                <canvas id="sectorChart"></canvas>
+            </div>
+        </section>
+        <section class="sales">
+            <h4>Meilleures ventes - Cette semaine</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nom du produit</th>
+                        <th>Prix</th>
+                        <th>Vendu</th>
+                        <th>Ventes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>LG-Réfrigérateur 3 volets</td>
+                        <td>155 000 XOF</td>
+                        <td>10</td>
+                        <td>1 550 000 XOF</td>
+                    </tr>
+                    <tr>
+                        <td>Samsung-Mini réfrigérateur 2 volets</td>
+                        <td>90 900 XOF</td>
+                        <td>7</td>
+                        <td>636 300 XOF</td>
+                    </tr>
+                    <tr>
+                        <td>Samsung-Aspirateur sans sac EC41-25W</td>
+                        <td>10 500 XOF</td>
+                        <td>30</td>
+                        <td>315 000 XOF</td>
+                    </tr>
+                    <tr>
+                        <td>LG Electronics - Rasoir électrique noir</td>
+                        <td>13 000 XOF</td>
+                        <td>15</td>
+                        <td>195 000 XOF</td>
+                    </tr>
+                    <tr>
+                        <td>LG Electronics - Téléviseur USB, HDMI, Bluetooth</td>
+                        <td>92 000 XOF</td>
+                        <td>1</td>
+                        <td>92 000 XOF</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BKJA Électroménagers - Ajouter un produit</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .container img {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+        .container input, .container textarea, .container select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .file-input {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            margin: 10px 0;
+        }
+        .file-input input[type="file"] {
+            width: 100%;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+        }
+        .file-input label {
+            display: block;
+            padding: 12px;
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+            color: #666;
+        }
+        .container button {
+            display: inline-block;
+            padding: 12px;
+            width: 100%;
+            background-color: #000;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        .container button:hover {
+            background-color: #444;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="assets/images/logo.png" alt="Logo BKJA Électroménagers">
+        </header>
+        <main>
+            <h2>Ajouter un produit</h2>
+            <form id="productForm">
+                <input type="text" id="productName" name="productName" placeholder="Nom du produit" required>
+                <input type="number" id="productPrice" name="productPrice" placeholder="Prix du produit (en XOF)" required>
+                <textarea id="productDescription" name="productDescription" rows="2" maxlength="200" placeholder="Description du produit (2 lignes max)" required></textarea>
+                <select id="productCategory" name="productCategory" required>
+                    <option value="">Sélectionner une catégorie</option>
+                    <option value="nouveautes">Nouveautés</option>
+                    <option value="promotions">Promotions</option>
+                </select>
+                <div class="file-input">
+                    <input type="file" id="productImage" name="productImage" accept="image/*" required>
+                    <label for="productImage">Télécharger l'image du produit</label>
+                </div>
+                <button type="submit">AJOUTER LE PRODUIT</button>
+            </form>
+        </main>
+    </div>
+    <script>
+     // Gestion de l'ajout d'un produit avec l'image et sauvegarde dans le localStorage
+document.getElementById('productForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const productName = document.getElementById('productName').value;
+    const productPrice = document.getElementById('productPrice').value;
+    const productDescription = document.getElementById('productDescription').value;
+    const productCategory = document.getElementById('productCategory').value;
+    const productImage = document.getElementById('productImage').files[0]; // Récupération du fichier image
+
+    // Vérification que le fichier est une image
+    if (productImage && productImage.type.startsWith('image/')) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            // Création d'un objet produit
+            const newProduct = {
+                name: productName,
+                price: parseInt(productPrice),
+                description: productDescription,
+                category: productCategory,
+                image: e.target.result // Utilisation de l'image sélectionnée
+            };
+            
+            // Récupération des produits existants du localStorage
+            let products = JSON.parse(localStorage.getItem('products')) || [];
+            
+            // Ajout du nouveau produit
+            products.push(newProduct);
+            
+            // Sauvegarde dans le localStorage
+            localStorage.setItem('products', JSON.stringify(products));
+            
+            alert('Produit ajouté avec succès !');
+            
+            // Réinitialisation des champs du formulaire
+            document.getElementById('productForm').reset();
+
+            // Rediriger vers la page correcte selon la catégorie
+            if (productCategory === 'nouveautes') {
+                window.location.href = 'nouveaute.html'; // Redirection vers la page "Nouveautés"
+            } else if (productCategory === 'promotions') {
+                window.location.href = 'promotion.html'; // Redirection vers la page "Promotions"
+            }
+        };
+
+        // Lecture du fichier image
+        reader.readAsDataURL(productImage);
+    } else {
+        alert('Veuillez sélectionner un fichier image valide.');
+    }
+});
+
+// Fonction pour charger et afficher les produits selon la catégorie
+function loadProducts(category) {
+    const productGrid = document.getElementById('product-grid');
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    
+    // Filtrer les produits selon la catégorie
+    const filteredProducts = products.filter(product => product.category === category);
+    
+    // Vider la grille des produits avant d'ajouter de nouveaux éléments
+    productGrid.innerHTML = '';
+
+    // Ajouter chaque produit à la grille
+    filteredProducts.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        productCard.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" class="product-image">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <div class="price">${product.price} XOF</div>
+        `;
+        productGrid.appendChild(productCard);
+    });
+}
+
+// Charger les produits au chargement de la page selon la catégorie
+window.addEventListener('load', function() {
+    const pageCategory = document.body.getAttribute('data-category');
+    if (pageCategory) {
+        loadProducts(pageCategory); // Charger les produits de la catégorie spécifiée
+    }
+});
+
+    </script>
+</body>
+</html>
